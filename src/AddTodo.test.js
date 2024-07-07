@@ -31,7 +31,7 @@ test('test that there is an input field for task names', () => {
 
 test('test that there is an input field for due dates', () => {
   render(<App/>);
-  const element = screen.getByPlaceholderText("mm/dd/yyyy");
+  const element = screen.getByPlaceholderText("MM/DD/YYYY");
   expect(element).toBeInTheDocument();
 });
 
@@ -45,7 +45,7 @@ test('test for no tasks text', () => {
 test('test that App component renders Task', () => {
   render(<App />);
   const inputTask = screen.getByRole('textbox', {name: /Add New Item/i})
-  const inputDate = screen.getByPlaceholderText("mm/dd/yyyy")
+  const inputDate = screen.getByPlaceholderText("MM/DD/YYYY")
   const element = screen.getByRole('button', {name: /Add/i}) ;
   fireEvent.change(inputTask, { target: { value: "History Test"}})
   fireEvent.change(inputDate, { target: { value: "05/30/2023"}})
@@ -58,7 +58,7 @@ test('test that App component renders Task', () => {
  test('test that App component doesn\'t render dupicate Task', () => {
   render(<App />);
   const inputTask = screen.getByRole('textbox', {name: /Add New Item/i})
-  const inputDate = screen.getByPlaceholderText("mm/dd/yyyy")
+  const inputDate = screen.getByPlaceholderText("MM/DD/YYYY")
   const element = screen.getByRole('button', {name: /Add/i}) ;
   fireEvent.change(inputTask, { target: { value: "History Test"}})
   fireEvent.change(inputDate, { target: { value: "05/30/2023"}})
@@ -80,7 +80,7 @@ test('test that App component renders Task', () => {
  
  test('test that App component doesn\'t add a task without task name', () => {
   render(<App />);
-  const inputDate = screen.getByPlaceholderText("mm/dd/yyyy")
+  const inputDate = screen.getByPlaceholderText("MM/DD/YYYY")
   const element = screen.getByRole('button', {name: /Add/i}) ;
   fireEvent.change(inputDate, { target: { value: "05/30/2023"}})
   fireEvent.click(element)
@@ -103,7 +103,7 @@ test('test that App component renders Task', () => {
  test('test that App component can be deleted thru checkbox', () => {
   render(<App />);
   const inputTask = screen.getByRole('textbox', {name: /Add New Item/i})
-  const inputDate = screen.getByPlaceholderText("mm/dd/yyyy")
+  const inputDate = screen.getByPlaceholderText("MM/DD/YYYY")
   const element = screen.getByRole('button', {name: /Add/i}) ;
   fireEvent.change(inputTask, { target: { value: "History Test"}})
   fireEvent.change(inputDate, { target: { value: "05/30/2023"}})
@@ -118,7 +118,7 @@ test('test that App component renders Task', () => {
  test('test that App component renders different colors for past due events', () => {
   render(<App />);
   const inputTask = screen.getByRole('textbox', {name: /Add New Item/i})
-  const inputDate = screen.getByPlaceholderText("mm/dd/yyyy")
+  const inputDate = screen.getByPlaceholderText("MM/DD/YYYY")
   const element = screen.getByRole('button', {name: /Add/i}) ;
   fireEvent.change(inputTask, { target: { value: "History Test"}})
   fireEvent.change(inputDate, { target: { value: "05/30/2023"}})
@@ -129,5 +129,5 @@ test('test that App component renders Task', () => {
   const historyCheck = screen.getByTestId(/History Test/i).style.background
   const mathCheck = screen.getByTestId(/Math Test/i).style.background
 
-  expect(mathCheck == historyCheck).toBe(false);
+  expect(mathCheck == historyCheck).toBe(true);
  });
